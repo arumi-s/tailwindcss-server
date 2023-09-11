@@ -14,7 +14,7 @@
 		"dev": "bun --watch run src/index.ts",
 		"prebuild": "rimraf ./bin",
 		"build:node": "bun build ./src/index.js --target node --outdir bin",
-		"build:pkg": "bun run build:node && pkg .",
+		"build:pkg": "bun run build:node && pkg ./bin/index.js --compress Brotli --no-bytecode --public-packages \"*\" --public -t node18-linuxstatic-x64 -o ./bin/tailwindcss-server",
 		"build:bun": "bun build ./src/index.js --target bun --outdir bin",
 		"build:bin": "bun build ./src/index.js --minify --compile --target bun --outfile ./bin/tailwindcss-server"
 	},
@@ -46,9 +46,6 @@
 		"zod": "^3.22.2"
 	},
 	"pkg": {
-		"targets": [
-			"node18-linuxstatic-x64"
-		],
-		"outputPath": "bin"
+		"assets": "node_modules/tailwindcss/lib/css/preflight.css"
 	}
 }
