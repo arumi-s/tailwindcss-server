@@ -1,0 +1,54 @@
+{
+	"name": "tailwindcss-server",
+	"version": "0.0.1",
+	"module": "src/index.ts",
+	"bin": "./bin/index.js",
+	"type": "module",
+	"author": {
+		"name": "Arumi",
+		"email": "arumi@thwiki.cc"
+	},
+	"scripts": {
+		"format": "prettier --write \"**/*.{ts,md}\"",
+		"start": "bun run src/index.ts",
+		"dev": "bun --watch run src/index.ts",
+		"prebuild": "rimraf ./bin",
+		"build:node": "bun build ./src/index.js --target node --outdir bin",
+		"build:pkg": "bun run build:node && pkg .",
+		"build:bun": "bun build ./src/index.js --target bun --outdir bin",
+		"build:bin": "bun build ./src/index.js --minify --compile --target bun --outfile ./bin/tailwindcss-server"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/arumi-s/tailwindcss-server.git"
+	},
+	"devDependencies": {
+		"@types/minimist": "^1.2.2",
+		"@typescript-eslint/eslint-plugin": "^6.6.0",
+		"@typescript-eslint/parser": "^6.6.0",
+		"bun-types": "latest",
+		"eslint": "^8.49.0",
+		"eslint-config-prettier": "^9.0.0",
+		"pkg": "^5.8.1",
+		"prettier": "^3.0.3",
+		"rimraf": "^5.0.1"
+	},
+	"peerDependencies": {
+		"typescript": "^5.0.0"
+	},
+	"dependencies": {
+		"autoprefixer": "^10.4.15",
+		"cssnano": "^6.0.1",
+		"minimist": "^1.2.8",
+		"postcss": "^8.4.29",
+		"postcss-nested": "^6.0.1",
+		"tailwindcss": "^3.3.3",
+		"zod": "^3.22.2"
+	},
+	"pkg": {
+		"targets": [
+			"node18-linuxstatic-x64"
+		],
+		"outputPath": "bin"
+	}
+}
