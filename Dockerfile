@@ -37,4 +37,4 @@ COPY --from=build /app /app
 # start the server at default port (3000)
 EXPOSE 3000
 #CMD [ "bun", "bin/index.js" ]
-CMD [ "bun", "src/index.ts" ]
+CMD [ "bun", "src/index.ts", "--port", "3000" ]

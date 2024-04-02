@@ -13,6 +13,8 @@ try {
 	}
 } catch (_: unknown) {}
 
+process.env.BROWSERSLIST_IGNORE_OLD_DATA = '1';
+
 const args = minimist(Bun.argv, {
 	alias: Object.fromEntries(
 		[...Object.keys(Args.options.flatMap((option) => option.keyof().Values)), ...Object.keys(Options.keyof().Values)]

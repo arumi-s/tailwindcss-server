@@ -66,5 +66,4 @@ $ curl 'localhost:3000/?preflight=false&scope=.tw' --data '@some_html_file.html'
 
 ## Known issues
 
-- Script `build:bin` not working according to [github issue](https://github.com/oven-sh/bun/issues/4918).
 - Unable to change theme and other [tailwindcss configurations](https://tailwindcss.com/docs/configuration).

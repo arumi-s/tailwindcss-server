@@ -10,23 +10,13 @@ export async function build(html: string, options: Options): Promise<string> {
 
 	const result = await postcss([
 		tailwindcss({
+			...options,
 			content: [{ raw: html, extension: 'html' }],
-
-			important: options.important,
-			prefix: options.prefix,
-			separator: options.separator,
-			safelist: options.safelist,
-			blocklist: options.blocklist,
-			presets: options.presets,
-			future: options.future,
-			experimental: options.experimental,
-			darkMode: options.darkMode,
-
 			corePlugins: {
 				preflight: options.preflight,
 			},
 		}),
-		postcssNested(),
+		postcssNested() as any /* type is incorrect for some reason */,
 		autoprefixer(),
 		cssnano(),
 	]).process(
